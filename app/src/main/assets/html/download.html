@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <title>Download your content...</title>
+    <!--Site main CSS-->
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<script type="text/javascript">
+        function openApk(event){
+            event.preventDefault();
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    document.getElementById("content").innerHTML = "";
+                    document.getElementById("content").innerHTML = xhttp.responseText;
+                    window.location = "DOWNLOAD_CONTENT.mp3";
+                }
+            };
+            xhttp.open("GET", "#", true);
+            xhttp.send();
+        }
+
+
+
+</script>
+<body id="content">
+<section>
+    <div class="body-bg js-body-bg">
+        <div class="main-container">
+
+            <div class="download-button">
+                <a href="#" onclick="openApk(event);">
+                            <span class="download-button-right">
+                                DOWNLOAD YOUR .mp3 FILE
+                            </span>
+                    <span class="clear"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascipt">
+    function startDownload() {
+         window.open('DOWNLOAD_CONTENT.mp3');
+    }
+</script>
+</body>
+</html>

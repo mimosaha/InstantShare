@@ -1,0 +1,412 @@
+@font-face {
+    font-family: 'nerissemibold';
+    src: url('../fonts/Neris-SemiBold-webfont.eot');
+    src: url('../fonts/Neris-SemiBold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Neris-SemiBold-webfont.woff') format('woff'),
+    url('../fonts/Neris-SemiBold-webfont.ttf') format('truetype'),
+    url('../fonts/Neris-SemiBold-webfont.svg#nerissemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'nerissemibold_italic';
+    src: url('../fonts/Neris-SemiBoldItalic-webfont.eot');
+    src: url('../fonts/Neris-SemiBoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Neris-SemiBoldItalic-webfont.woff') format('woff'),
+    url('../fonts/Neris-SemiBoldItalic-webfont.ttf') format('truetype'),
+    url('../fonts/Neris-SemiBoldItalic-webfont.svg#nerissemibold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../fonts/Roboto-Regular-webfont.eot');
+    src: url('../fonts/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Roboto-Regular-webfont.woff') format('woff'),
+         url('../fonts/Roboto-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Roboto-Regular-webfont.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'robotobold_italic';
+    src: url('../fonts/Roboto-BoldItalic-webfont.eot');
+    src: url('../fonts/Roboto-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Roboto-BoldItalic-webfont.woff') format('woff'),
+    url('../fonts/Roboto-BoldItalic-webfont.ttf') format('truetype'),
+    url('../fonts/Roboto-BoldItalic-webfont.svg#robotobold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+a {
+    color: #337ab7;
+    text-decoration: none;
+    outline: none;
+}
+a:hover {
+    color: #337ab7;
+    text-decoration: none;
+    outline: none;
+}
+a:focus {
+    color: #337ab7;
+    text-decoration: none;
+    outline: none;
+}
+html,
+body {
+    height: 100%;
+}
+section {
+    height: 100%;
+}
+body {
+    font-family: "nerissemibold","robotoregular","robotobold_italic","nerissemibold_italic","Open Sans",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    color: #333333;
+}
+ul {
+    list-style: none;
+}
+.clear {
+    clear: both;
+}
+.body-bg {
+    /*background-image: url("../images/screen-bg.png");
+    background-image: url("../images/screen-bg-slice.png");*/
+    background-color:#00D8DD;
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    /*height: 100%;*/
+    padding-bottom: 20px;
+    /*background: #40469a;
+    background-image: -webkit-linear-gradient(top, #40469a, #59d3c4);
+    background-image: -moz-linear-gradient(top, #40469a, #59d3c4);
+    background-image: -ms-linear-gradient(top, #40469a, #59d3c4);
+    background-image: -o-linear-gradient(top, #40469a, #59d3c4);
+    background-image: linear-gradient(to bottom, #40469a, #59d3c4);*/
+}
+.main-container {
+    margin: 0px auto 20px auto;
+    width: 94%;
+}
+.share-and-connect-area {
+    padding: 0 0 29px;
+
+}
+.share-and-connect-area-top {
+    padding: 12px 0 5px;
+    width:90%;
+    margin:0 auto;
+}
+/*.share-and-connect-area-top-image {
+    border: 3px solid #fff;
+    border-radius: 50%;
+    height: 87px;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 87px;
+}*/
+.share-and-connect-area-top-image {
+    background-color: #ffffff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    height: 87px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 3px;
+    width: 87px;
+}
+.share-and-connect-area-top-image img {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    height: 100%;
+    width:100%
+}
+
+.share-and-connect-area-middle {
+    color: #fff;
+    font-size: 19px;
+    text-align: center;
+    float:center;
+}
+.user_font{
+font-size:19px;
+}
+.share-and-connect-area-bottom {
+    color: #fff;
+    font-size: 19px;
+    text-align: center;
+    float:center;
+    text-transform: capitalize;
+}
+
+.install-area {
+    background-color: #f2f2f2;
+    padding: 5px;
+}
+.install-area-top {
+    padding-bottom: 10px;
+}
+.install-area-top-left {
+    float: left;
+    padding-right: 3%;
+    padding-top: 8px;
+    text-align: center;
+    width: 18%;
+}
+.install-area-top-left a{
+
+}
+.install-area-top-left a img {
+    max-width: 50px;
+    width: 100%;
+}
+.install-area-top-right {
+    color: #2d346c;
+    float: left;
+    font-family: robotoregular;
+    font-size: 14px;
+    line-height: 16px;
+    padding-top: 2%;
+    width: 77%;
+}
+.install-area-bottom {
+    background-image: url("../images/repeted-slice.png");
+    background-repeat: repeat-x;
+    box-shadow: 0 1px 1px #d1d1d1;
+    padding: 17px 14px;
+}
+.install-area-bottom-left {
+    float: left;
+    width: 76%;
+}
+.install-area-bottom-left-title {
+    font-size: 13px;
+    line-height: 22px;
+}
+.install-area-bottom-left-sub-title {
+    color: #707070;
+    font-size: 11px;
+    line-height: 13px;
+}
+.install-area-bottom-right {
+    float: right;
+    padding-top: 15px;
+    width: 12%;
+}
+.install-area-bottom-right img {
+    max-width: 30px;
+}
+.down-arrow {
+    text-align: center;
+}
+.down-arrow img {
+    max-width: 70px;
+    padding-bottom: 5px;
+}
+.download-button {
+    background-color: #F57C00;
+    border-radius: 4px;
+    box-shadow: 0 0 1px #2d346c;
+    color: #fff;
+    text-align: center;
+}
+.download-button-left {
+    display: inline-block;
+}
+.download-button-left img{}
+.download-button-right {
+    background-image: url("../images/download_yo.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    font-size: 21px;
+    line-height: 26px;
+    padding-left: 35px;
+}
+.download-button-right span {
+    font-family: nerissemibold_italic;
+}
+.install-area-top-right span {
+    font-family: robotobold_italic;
+    font-size: 13px;
+}
+.download-button a {
+    color: #fff;
+    display: block;
+    padding: 8px 0;
+}
+.download-button a span{
+    display: inline-block;
+}
+.instruction-content {
+    padding: 48px 0 0;
+}
+.instruction-content-top {
+    background-color: #f2f2f2;
+    box-shadow: 1px 1px 3px #999;
+    color: #2d346c;
+    font-family: robotoregular;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0 0 23px;
+    min-height: 134px;
+    padding: 2% 5px 5px;
+}
+.instruction-content-top-image {
+    min-height: 87px;
+    position: relative;
+}
+.img-1 {
+    padding: 4px 0 0;
+    text-align: center;
+}
+.img-1 img {
+    width: 98%;
+}
+.img-2 {
+    margin-top: 0;
+    position: absolute;
+    text-align: center;
+    top: -15px;
+    width: 100%;
+}
+.img-2 img{}
+.instruction-content-top-content {
+    font-size: 13px;
+    text-align: center;
+}
+.instruction-content-top-content span{
+    font-weight:bold;
+}
+.instruction-content-bottom{
+    background-color: #f2f2f2;
+    padding: 5px;
+    color: #2d346c;
+    font-family: robotoregular;
+    font-size: 14px;
+    line-height: 16px;
+    padding-top: 2%;
+    box-shadow: 1px 1px 3px #999;
+}
+.instruction-content-bottom img{}
+.instruction-content-bottom span{
+    font-weight:bold;
+}
+.instruction-content-bottom-center {
+    font-size: 13px;
+    margin: 0 auto;
+    padding: 4px 0 9px;
+    text-align: center;
+    width: 69%;
+}
+.body-bg {
+    height: 100%;
+    padding-bottom: 0;
+
+}
+.body-download {
+    height: 100%;
+    padding-bottom: 0;
+    background-color:#FFCA56;
+}
+
+.help-content-bottom{
+    background-color: #f2f2f2;
+    padding: 5px;
+    color: #2d346c;
+    font-family: robotoregular;
+    font-size: 14px;
+    line-height: 16px;
+    box-shadow: 1px 1px 3px #999;
+}
+
+.help-content-bottom-center {
+    font-size: 14px;
+    margin: 0 auto;
+    padding: 4px 0 9px;
+    text-align: center;
+}
+
+.help-content-text-big {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+.help-content-text-normal {
+    line-height: 21px;
+    padding-top: 4%;
+}
+
+.help-area-top-image {
+    height: 150px;
+    margin: 0 auto 10px auto;
+    overflow: hidden;
+    padding: 10px;
+    width: 150px;
+    border-radius:100%;
+    background-color:#fff;
+}
+
+.help-area-top-image img {
+    max-width: 100%;
+}
+
+.help-content {
+    padding: 15px 0px 0px;
+}
+
+.share-and-connect-area-middle {
+    line-height: 24px;
+    font-size: 16px;
+}
+.help-content-text-big {
+    font-size: 21px;
+    line-height: 26px;
+}
+
+/*//////////////////////////////////// Start max width 479px \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+@media only screen and (max-width: 479px) {
+    .body-bg {
+        height: 100%;
+        padding-bottom: 0;
+    }
+}
+/*//////////////////////////////////// end max width 479px \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+
+/*//////////////////////////////////// Start min width 480px and max width 767px \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+@media only screen and (min-width: 480px) and (max-width: 767px) {  }
+/*//////////////////////////////////// End min width 480px and max width 767px \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+
+/*//////////////////////////////////// Start min width 768px and max width 991px \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .body-bg {
+        height: 100%;
+        padding-bottom: 0;
+    }
+}
+/*//////////////////////////////////// End min width 768px and max width 991px \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+
+/*//////////////////////////////////// Start min width 992px and max width 1198px \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+@media only screen and (min-width: 992px) and (max-width: 1179px) {
+    .body-bg {
+        height: 100%;
+        padding-bottom: 0;
+    }
+}
+/*//////////////////////////////////// End min width 992px and max width 1198px \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+
