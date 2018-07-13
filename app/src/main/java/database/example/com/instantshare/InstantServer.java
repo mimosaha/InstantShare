@@ -131,6 +131,11 @@ public class InstantServer {
         private Properties methods, header, parameters;
         private SimpleDateFormat simpleDateFormat;
 
+        /**
+         * @param socket
+         * When server got any type of information
+         * then it starts its session
+         */
         HTTPRequestSession(Socket socket) {
             this.socket = socket;
             Thread thread = new Thread(this);
@@ -138,6 +143,10 @@ public class InstantServer {
             thread.start();
         }
 
+        /**
+         * Reset previous session data and clear all info
+         * re-initiate it again
+         */
         private void reset() {
             if (methods != null)
                 methods.clear();
@@ -147,6 +156,10 @@ public class InstantServer {
                 parameters.clear();
         }
 
+        /**
+         * Initiate all properties and
+         * initiate time format for getting request from client
+         */
         private void init() {
 
             methods = new Properties();
