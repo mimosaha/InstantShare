@@ -44,27 +44,41 @@ import java.util.TimeZone;
 public class InstantServer {
 
     private int port;
+    /**
+     * Response status type
+     */
     private String HTTP_OK = "200 OK",
             HTTP_PARTIALCONTENT = "206 Partial Content",
             HTTP_RANGE_NOT_SATISFIABLE = "416 Requested Range Not Satisfiable",
             HTTP_NOTMODIFIED = "304 Not Modified",
             filePath;
 
-    String METHOD = "method";
-    String URI = "uri";
+    private String METHOD = "method", URI = "uri";
 
+    /**
+     * Response mime type
+     */
     private String MIME_DEFAULT_BINARY = "application/octet-stream",
             MIME_PLAINTEXT = "text/plain",
             MIME_HTML = "text/html";
 
     private PercentCallback percentCallback;
 
+    /**
+     * Initiating and starting server after calling this constructor
+     * @param port -> Server port which generate it randomly
+     * @param filePath -> Sharable file path
+     */
     InstantServer(int port, String filePath) {
         this.port = port;
         this.filePath = filePath;
         startServer();
     }
 
+    /**
+     * Set a callback for showing a percent in UI,
+     * how amount of data has been sent by socket
+     */
     public InstantServer setPercentCallback(PercentCallback percentCallback) {
         this.percentCallback = percentCallback;
         return this;
@@ -125,6 +139,10 @@ public class InstantServer {
         }
     }
 
+    /**
+     * Handles one session, i.e. parses the HTTP request
+     * and returns the local Response.
+     */
     private class HTTPRequestSession implements Runnable {
 
         private Socket socket;
@@ -177,6 +195,10 @@ public class InstantServer {
                 if (inputStream == null)
                     return;
 
+                // Read the first 8192 bytes.
+                // The full header should fit in here.
+                // Default header limit is 8KB.
+
                 int bufferSize = 8192;
                 byte[] buffer = new byte[bufferSize];
                 int reqLength = inputStream.read(buffer, 0, bufferSize);
@@ -185,6 +207,7 @@ public class InstantServer {
                 reset();
                 init();
 
+                // Create a BufferedReader for parsing the header data.
                 ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(buffer, 0, reqLength);
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(byteArrayInputStream));
 
@@ -201,6 +224,10 @@ public class InstantServer {
             }
         }
 
+        /**
+         * Purpose of this api send a response which already prepared by URI and property
+         * @param response -> Sends given local Response to the socket.
+         */
         private void sendResponse(Response response) {
 
             String status = response.status;
@@ -264,6 +291,10 @@ public class InstantServer {
             }
         }
 
+        /**
+         * Decodes the sent headers and loads the data into
+         * java Properties' key - value pairs
+         **/
         private void decodeHeaderData(BufferedReader bufferedReader) {
 
             try {
@@ -273,9 +304,11 @@ public class InstantServer {
                 if (!stringTokenizer.hasMoreTokens())
                     return;
 
+                // Parse method and uri from request
                 methods.setProperty(METHOD, stringTokenizer.nextToken());
                 methods.setProperty(URI, stringTokenizer.nextToken());
 
+                // Decode the header into parameters and header java properties
                 String line = bufferedReader.readLine();
                 while (line != null && line.trim().length() > 0) {
                     int p = line.indexOf(':');
@@ -291,27 +324,46 @@ public class InstantServer {
         }
     }
 
+    /**
+     * Send a response progress
+     * @param responsePercentage -> show a percentage in UI
+     */
     private void getResponseProgress(int responsePercentage) {
         if (percentCallback != null) {
             percentCallback.showPercent(responsePercentage);
         }
     }
 
+    /**
+     * HTTP local Response.
+     * Return one of these from serve().
+     * Preparing any response and
+     * set all info in this response obj
+     */
     private class Response {
         String status, mimeType;
         InputStream inputStream;
         Properties header = new Properties();
 
+        /**
+         * Inject any header for preparing response then use this api
+         */
         void addHeader(String key, String value) {
             header.put(key, value);
         }
 
+        /**
+         * Basic constructor for sending file response
+         */
         Response(String status, String mimeType, InputStream inputStream) {
             this.status = status;
             this.mimeType = mimeType;
             this.inputStream = inputStream;
         }
 
+        /**
+         * Convenience method that makes an InputStream out of given text.
+         */
         Response(String status, String mimeType, String txt) {
             this.status = status;
             this.mimeType = mimeType;
@@ -323,10 +375,19 @@ public class InstantServer {
         }
     }
 
+    /**
+     * Prepare and serve data after getting any request from client side
+     */
     private Response serveData(String uri, Properties method) {
         return serveFile(uri, method);
     }
 
+    /**
+     * Prepare a file response when client request to download a file
+     * @param header -> Adding header params for preparing response file
+     * @return a response which contains the input stream of selected file,
+     * status and mime type also
+     */
     private Response prepareFile(Properties header) {
         Response response = null;
         String mime = MIME_DEFAULT_BINARY;
@@ -351,6 +412,7 @@ public class InstantServer {
                             endAt = Long.parseLong(range.substring(minus + 1));
                         }
                     } catch (NumberFormatException nfe) {
+                        nfe.printStackTrace();
                     }
                 }
             }
@@ -401,6 +463,12 @@ public class InstantServer {
         return response;
     }
 
+    /**
+     * Prepare and serve any type of response after getting any request
+     * @param uri -> serve any response based on requested uri
+     * @param header -> header is needed when serve a media or apk content
+     * @return -> the desire response based on client request
+     */
     private Response serveFile(String uri, Properties header) {
 
         Response response = null;
